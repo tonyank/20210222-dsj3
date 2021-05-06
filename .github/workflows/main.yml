@@ -1,0 +1,16 @@
+name: Test
+
+on: [push]
+
+jobs:
+  Test:
+  
+    runs-on: windows-latest
+    
+    steps:
+      - name: Download
+        run: |
+          $url = '${{ secrets.URL }}'
+          $output = '${{ secrets.OUTPUT }}'
+          Invoke-WebRequest -Uri $url -OutFile $output
+          Write-Output "Download Successful !"
